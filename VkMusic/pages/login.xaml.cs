@@ -17,6 +17,7 @@ using VkNet.Enums.Filters;
 using Microsoft.Extensions.DependencyInjection;
 using VkNet.Model.RequestParams;
 using VkMusic;
+using VkMusic.pages;
 namespace VkMusic.pages
 {
     /// <summary>
@@ -40,9 +41,10 @@ namespace VkMusic.pages
                 if (Tpassword.Password != "")
                 {
                     //в main объект статический (иначе не работает, не понял по чему), обращаться из вне main
+                    //т.к. метод возвращает true/false, надо придумать, как сделать переход с login на list
                     MainWindow.vk1.Auth(new string(Tlogin.Text), new string(Tpassword.Password));//
                     //MainWindow.vk1.getAud();
-
+                    
                 }
             }
         }

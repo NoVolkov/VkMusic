@@ -41,21 +41,16 @@ namespace VkMusic
         {
             return vk.UserId.Value;
         }
-        //выполняет единственное действие, может надо перенести в audios()
-        public VkNet.Utils.VkCollection<VkNet.Model.Attachments.Audio> GetAudio(long Id)
+        
+
+        //возвращает List всех аудио
+        public List<AudioUnit> GetAudiosList(long? Id)
         {
-             return vk.Audio.Get(
+            VkNet.Utils.VkCollection<VkNet.Model.Attachments.Audio> audios = vk.Audio.Get(
                     new AudioGetParams
                     {
                         OwnerId = Id
-
-                    }
-                    );
-        }
-
-        //возвращает List всех аудио
-        public List<AudioUnit> GetAudiosList(VkNet.Utils.VkCollection<VkNet.Model.Attachments.Audio> audios)
-        {
+                    });
             List<AudioUnit> res = new List<AudioUnit>();
             foreach (VkNet.Model.Attachments.Audio a in audios)
             {

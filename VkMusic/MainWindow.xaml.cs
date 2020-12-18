@@ -30,7 +30,7 @@ namespace VkMusic
     {
         
         public static Vk vk1 = new VkMusic.Vk();
-        
+        public static bool Tran1;
         public MainWindow()
         {
             InitializeComponent();
@@ -42,6 +42,7 @@ namespace VkMusic
         void OpenLoginPage()
         {
             frame.Navigate(new login(this));
+            
         }
 
     }
