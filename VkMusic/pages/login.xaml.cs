@@ -40,7 +40,7 @@ namespace VkMusic.pages
                 if (Tpassword.Password != "")
                 {
 
-                    MainWindow.vk1.Auth(new string("vdm.volkov249@mail.ru"), new string("Wsufy2001Kbylf"));//
+                    MainWindow.vk1.Auth(new string(Tlogin.Text), new string(Tpassword.Password));//
                     //MainWindow.vk1.getAud();
 
                 }
