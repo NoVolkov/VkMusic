@@ -36,7 +36,7 @@ namespace VkMusic
             InitializeComponent();
             
             OpenLoginPage();
-            
+            //Коммент
 
         }
         void OpenLoginPage()
