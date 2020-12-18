@@ -14,7 +14,7 @@ namespace VkMusic
     {
         public VkApi vk = new VkApi(new ServiceCollection().AddAudioBypass());
         
-        //public void()
+        
         public bool Auth(string l,string pw)
         {
             try
@@ -26,12 +26,6 @@ namespace VkMusic
                     ApplicationId = 7658887,
                     Settings = Settings.All
                 });
-                /*Console.WriteLine(vk.Audio.Get(new AudioGetParams
-                {
-                    OwnerId = 238254422
-                }
-                )[1].Title.ToString());*/
-                
                 return true;
             }
             catch
@@ -41,10 +35,13 @@ namespace VkMusic
             }
         }
         //Audio.Get(new AudioGetParams{OwnerId}).TotalCount----кол-во аудио
+
+        //id текущего пользователя
         public long getIdThisUser()
         {
             return vk.UserId.Value;
         }
+        //выполняет единственное действие, может надо перенести в audios()
         public VkNet.Utils.VkCollection<VkNet.Model.Attachments.Audio> GetAudio(long Id)
         {
              return vk.Audio.Get(
