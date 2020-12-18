@@ -21,8 +21,8 @@ namespace VkMusic
             {
                 vk.Authorize(new ApiAuthParams()
                 {
-                    Login = l,//+79518852022
-                    Password = pw,//"Wsufy2001Kbylf"
+                    Login = l,//
+                    Password = pw,//
                     ApplicationId = 7658887,
                     Settings = Settings.All
                 });
