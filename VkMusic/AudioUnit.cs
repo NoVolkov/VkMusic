@@ -6,10 +6,10 @@ namespace VkMusic
 {
     public class AudioUnit
     {
-        long? id, duration;
-        string artist, title;
+        long? id;
+        string duration, artist, title;
 
-        public AudioUnit(long? id, long? duration, string artist, string title)
+        public AudioUnit(long? id, string duration, string artist, string title)
         {
             this.id = id;
             this.duration = duration;
@@ -20,7 +20,7 @@ namespace VkMusic
         {
             return id;
         }
-        public long? getDuration()
+        public string getDuration()
         {
             return duration;
         }

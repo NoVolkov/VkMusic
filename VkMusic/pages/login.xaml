@@ -8,12 +8,14 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="login">
 
-    <Grid>
-        <Label Content="Введите логин:" HorizontalAlignment="Center" Margin="0,155,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.281,0.631"/>
-        <TextBox x:Name="Tlogin" HorizontalAlignment="Center" Height="24" Margin="0,186,0,0" VerticalAlignment="Top" Width="119"/>
-        <Label Content="Введите пароль:" HorizontalAlignment="Center" Margin="311,199,300,194" VerticalAlignment="Center"/>
-        <PasswordBox x:Name="Tpassword" HorizontalAlignment="Center" Margin="0,241,0,0" VerticalAlignment="Top" Width="119"/>
-        <Button x:Name="enter" Click="enter_Click" Content="Войти" HorizontalAlignment="Left" Margin="387,264,0,0" VerticalAlignment="Top"/>
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Label Content="Введите логин:"  Margin="0,0,0,0" VerticalAlignment="Top" />
+        <TextBox x:Name="Tlogin"  Height="18" Margin="0,24,0,0" VerticalAlignment="Top"  Width="170"/>
+        <Label Content="Введите пароль:"  Margin="0,42,0,0" VerticalAlignment="Top"/>
+        <PasswordBox x:Name="Tpassword" Height="18"  Margin="0,66,0,0" VerticalAlignment="Top" Width="170"/>
+        <CheckBox x:Name="checkBox1"  IsThreeState="False" Unchecked="checkBox_Unchecked" Checked="checkBox_Checked" Height="20" Margin="0,70,0,0" Content="Запомнить данные." />
+        <Button x:Name="enter" Click="enter_Click" Content="Войти"  Margin="0,110,0,0" VerticalAlignment="Top"/>
+        
 
     </Grid>
 </Page>

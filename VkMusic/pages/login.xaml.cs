@@ -27,13 +27,22 @@ namespace VkMusic.pages
     {
         public MainWindow mainW;
         
-        public login(MainWindow _mainW)
+        public login()//MainWindow _mainW
         {
             InitializeComponent();
-            mainW = _mainW;
-            
+            /*mainW = _mainW;*/
         }
-      
+        //авто вход
+        public void AutoEnter()
+        {
+            if (LoginFile.ReadAuto())
+            {
+                Tlogin.Text = LoginFile.ReadLog()[0];
+                Tpassword.Password = LoginFile.ReadLog()[1];
+                enter_Click(new Object(),new RoutedEventArgs());
+            }
+        }
+        //вход по кнопке и переход на страницу вашей музыки
         private void enter_Click(object sender, RoutedEventArgs e)
         {
             if (Tlogin.Text != "")
@@ -42,13 +51,39 @@ namespace VkMusic.pages
                 {
                     //в main объект статический (иначе не работает, не понял по чему), обращаться из вне main
                     //т.к. метод возвращает true/false, надо придумать, как сделать переход с login на list
-                    MainWindow.vk1.Auth(new string(Tlogin.Text), new string(Tpassword.Password));//
+                    if(MainWindow.vk1.Auth(new string(Tlogin.Text), new string(Tpassword.Password))!=true)
+                    {
+                        MessageBox.Show("Неправильный логин или пароль.");
+                        return;
+                    }
+                    //
+                    /*MessageBox.Show(LoginFile.ReadAuto());*/
                     //MainWindow.vk1.getAud();
-                    
+                    /*if (LoginFile.ReadAuto() == true)
+                    {
+                        MessageBox.Show("$$$");
+                        LoginFile.RecLog(new string(Tlogin.Text), new string(Tpassword.Password));
+                    }*/
                 }
             }
+
+            NavigationService service = NavigationService.GetNavigationService(this);
+            service.Navigate(App.l1);
+            App.l1.MesAutUser();
+            App.l1.LoadAudioList(MainWindow.vk1.getIdThisUser());
         }
-        
-        
+        //Запомнить данные для входа
+        private void checkBox_Checked(object sender, RoutedEventArgs e)
+        {
+            LoginFile.RecAuto(true);
+        }
+        //Раззпомнить данные для входа
+        private void checkBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            LoginFile.RecAuto(false);
+        }
+
+
+
     }
 }

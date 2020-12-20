@@ -28,22 +28,19 @@ namespace VkMusic
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+        //благодаря этому всё работает ещё лучше
         public static Vk vk1 = new VkMusic.Vk();
-        public static bool Tran1;
         public MainWindow()
         {
             InitializeComponent();
-            
+           /* App.log1.AutoEnter();*/
             OpenLoginPage();
             //Коммент
-
         }
+        //запускается программа от сюда
         void OpenLoginPage()
         {
-            frame.Navigate(new login(this));
-            
+            frame.Navigate(App.log1);
         }
-
     }
 }
