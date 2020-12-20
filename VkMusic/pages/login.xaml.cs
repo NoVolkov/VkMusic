@@ -39,7 +39,7 @@ namespace VkMusic.pages
             {
                 Tlogin.Text = LoginFile.ReadLog()[0];
                 Tpassword.Password = LoginFile.ReadLog()[1];
-                enter_Click(new Object(),new RoutedEventArgs());
+                //enter_Click(new Object(),new RoutedEventArgs()); из-за этого выкидывает ошибку при переходе на list
             }
         }
         //вход по кнопке и переход на страницу вашей музыки
@@ -59,11 +59,10 @@ namespace VkMusic.pages
                     //
                     /*MessageBox.Show(LoginFile.ReadAuto());*/
                     //MainWindow.vk1.getAud();
-                    /*if (LoginFile.ReadAuto() == true)
+                    if (LoginFile.ReadAuto() == true)
                     {
-                        MessageBox.Show("$$$");
                         LoginFile.RecLog(new string(Tlogin.Text), new string(Tpassword.Password));
-                    }*/
+                    }
                 }
             }
 

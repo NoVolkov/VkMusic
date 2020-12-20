@@ -12,7 +12,7 @@
         <DockPanel LastChildFill="True"  Background="lightblue" Height="30" VerticalAlignment="Top">
             <Button x:Name="retListFriends"  Click="return_Click" Content="Вернуться к своей музыке" Height="30" Width="150" HorizontalAlignment="Right"></Button>
         </DockPanel>
-        <ListView x:Name="listFriendsShow" Height="400" Margin="0,30,0,0">
+        <ListView x:Name="listFriendsShow" Height="385" Margin="0,30,0,0">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">

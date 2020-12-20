@@ -30,15 +30,14 @@ namespace VkMusic.pages
         {
             if (MainWindow.vk1.vk.IsAuthorized == true)
             {
-                MainWindow.vk1.test("2");
                 this.tUserName.Content = "Вы вошли как: " + MainWindow.vk1.getNameUser(MainWindow.vk1.getIdThisUserIEnum());
             }
         }
         //выход из под своей учётки
         private void exit_Click(object sender, RoutedEventArgs e)
         {
-           /* LoginFile.RecAuto(false);
-            LoginFile.DelLog();*/
+            LoginFile.RecAuto(false);
+            LoginFile.DelLog();
             NavigationService service = NavigationService.GetNavigationService(this);
             MessageBox.Show(MainWindow.vk1.LogOut());
             

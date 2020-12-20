@@ -33,13 +33,15 @@ namespace VkMusic
         public MainWindow()
         {
             InitializeComponent();
-           /* App.log1.AutoEnter();*/
+            /* App.log1.AutoEnter();*/
+            //MessageBox.Show(LoginFile.ReadAuto().ToString());
             OpenLoginPage();
             //Коммент
         }
         //запускается программа от сюда
         void OpenLoginPage()
         {
+            App.log1.AutoEnter();
             frame.Navigate(App.log1);
         }
     }

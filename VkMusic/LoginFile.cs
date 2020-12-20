@@ -4,119 +4,34 @@ using System.Text;
 using System.IO;
 namespace VkMusic
 {
+    //для записи и хранения данных для входа
     class LoginFile
     {
+        //запись логина и пароля в корень диска C: Б - безопасность.
         public static void RecLog(string l,string p)
         {
-            FileStream fs1 = new FileStream(@"C:\VkMusicDate.txt", FileMode.OpenOrCreate);
-            string arr = l + "\n" + p+"\0";
-            byte[] log = System.Text.Encoding.Default.GetBytes(arr);
-            fs1.Write(log,0,log.Length);
-            fs1.Close();
+            FileStream fs = new FileStream(@"C:\VkMusicDate.txt", FileMode.OpenOrCreate);
+            fs.Close();
+            File.WriteAllLines(@"C:\VkMusicDate.txt", new string[] { l, p }, Encoding.UTF8);
         }
+        //удаление логина и пароля из файла при выходе из учётки
         public static void DelLog()
         {
+            FileStream fs = new FileStream(@"C:\VkMusicDate.txt", FileMode.OpenOrCreate);
+            fs.Close();
             FileStream fs1 = new FileStream(@"C:\VkMusicDate.txt", FileMode.Truncate);
             
             fs1.Close();
         }
+        //чтение логина и пароля
         public static string[] ReadLog()
         {
+            FileStream fs = new FileStream(@"C:\VkMusicDate.txt", FileMode.OpenOrCreate);
+            fs.Close();
             string[] res = File.ReadAllLines(@"C:\VkMusicDate.txt");
             return res;
-            /*FileStream fs1 = new FileStream(@"C:\VkMusicDate.txt", FileMode.OpenOrCreate);
-            byte[] auto = new byte[] {0};
-            int n;
-            for(int i = 0; i < 256; i++)
-            {
-                n=fs1.Read(auto, 0, 2);
-                if (n == (int)'\0')
-                {
-                    break;
-                }
-            }
-            string l = "", p = "";
-            bool t = true;
-            foreach(byte b in auto)
-            {
-                if (b!=10 && t)
-                {
-                    l += b.ToString();
-                }
-                else
-                {
-                    p += b.ToString();
-                }
-            }
-            res[0] = l;
-            res[1] = p;
-            return res;
-            
-            
-            */
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            /*char[] auto = new char[] { };
-            
-            int j,n=0;
-            for (int i= 0; i < 256; i++){
-                j= fs1.ReadByte();
-                if (j != '\0')
-                {
-                    auto[i] = (char)j;
-                }
-                else
-                {
-                    break;
-                }
-                n++;
-            }
-
-            //fs1.Read(auto, 0, 256);
-            fs1.Close();
-
-            string l = "", p = "";
-            bool t = true;
-            foreach (char b in auto)
-            {
-                if (b != 10 && t)
-                {
-                    l += b.ToString();
-                }
-                else
-                {
-                    if (b != auto[n])
-                    {
-                        t = false;
-                        p += b.ToString();
-                    }
-                    else
-                    {
-                        break;
-                    }
-                    
-                }
-            }
-            res[0] = l;
-            res[1] = p;
-            return res;*/
         }
-
+        //установка значения для сохранения пароля
         public static void RecAuto(bool auto)
         {
             FileStream fs1 = new FileStream(@"C:\VkMusicDateAuto.txt", FileMode.OpenOrCreate);
@@ -133,6 +48,7 @@ namespace VkMusic
             fs1.Write(log, 0, log.Length);
             fs1.Close();
         }
+        //чтение значения для автозаполнения
         public static bool ReadAuto()
         {
             byte[] auto = new byte[] {3 };
@@ -142,8 +58,6 @@ namespace VkMusic
                 fs1.Read(auto, 0, 1);
                 fs1.Close();
                 foreach (byte b in auto)res += b.ToString();
-
-
                 if (res == "49") return true;
                 return false;
             }
