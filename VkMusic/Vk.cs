@@ -27,6 +27,15 @@ namespace VkMusic
                     ApplicationId = 7658887,
                     Settings = Settings.All
                 });
+                try
+                {
+                    MainWindow.vk1.vk.Stats.TrackVisitor();
+                }
+                catch
+                {
+
+                }
+
                 if(MainWindow.vk1.vk.IsAuthorized==true) return true;
                 return false;
             }
