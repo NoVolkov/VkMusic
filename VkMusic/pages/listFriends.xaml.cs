@@ -32,6 +32,10 @@ namespace VkMusic.pages
                 id = i;
                 FIO = f;
             }
+            public long? GetId()
+            {
+                return id;
+            }
         }
         //отображает список друзей
         public void LoadFriendsList()
@@ -60,6 +64,7 @@ namespace VkMusic.pages
             try
             {
                 App.l1.LoadAudioList(MainWindow.vk1.GetFriendsList()[listFriendsShow.SelectedIndex].getIdFriend());//
+                MainWindow.lastId = MainWindow.vk1.GetFriendsList()[listFriendsShow.SelectedIndex].getIdFriend();// id последнего выбранного друга
             }
             catch
             {

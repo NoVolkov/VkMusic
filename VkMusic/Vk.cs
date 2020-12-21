@@ -7,6 +7,9 @@ using VkNet.Model;
 using VkNet.Enums.Filters;
 using Microsoft.Extensions.DependencyInjection;
 using VkNet.Model.RequestParams;
+using Microsoft.VisualBasic;
+using System.Windows;
+using VkMusic.pages;
 
 namespace VkMusic
 {
@@ -15,6 +18,8 @@ namespace VkMusic
         //благодаря этому всё работает
         public VkApi vk = new VkApi(new ServiceCollection().AddAudioBypass());
 
+
+     
         //вход в аккаунт Вк
         public bool Auth(string l, string pw)
         {
@@ -25,16 +30,16 @@ namespace VkMusic
                     Login = l,//
                     Password = pw,//
                     ApplicationId = 7658887,
-                    Settings = Settings.All
-                });
-                try
-                {
-                    MainWindow.vk1.vk.Stats.TrackVisitor();
-                }
-                catch
-                {
+                    Settings = Settings.All,
 
-                }
+                     TwoFactorAuthorization = () =>
+                     {
+                         TwoFactor twoFactor = new TwoFactor();
+                         twoFactor.Show();
+                         return twoFactor.getCode();
+                         
+                     }
+                });
 
                 if(MainWindow.vk1.vk.IsAuthorized==true) return true;
                 return false;
@@ -115,11 +120,17 @@ namespace VkMusic
                         OwnerId = Id
                     });
             List<AudioUnit> res = new List<AudioUnit>();
+            
             foreach (VkNet.Model.Attachments.Audio a in audios)
             {
                 res.Add(
-                    new AudioUnit(a.Id, interMin(a.Duration), a.Artist, a.Title)
+                    new AudioUnit(a.Id, interMin(a.Duration), a.Artist, a.Title, a.Url)
                     );
+                /*Console.WriteLine(a.Url);
+                Console.WriteLine("hello wrld");*/
+                
+                
+                
             }
             return res;
         }

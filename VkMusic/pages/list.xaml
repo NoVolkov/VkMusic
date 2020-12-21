@@ -9,27 +9,39 @@
       Title="list">
 
     <Grid >
-        
-            <DockPanel LastChildFill="True"  Background="lightblue" Height="30" VerticalAlignment="Top">
-                <Label x:Name="tUserName" Height="30"  Margin="0,0,0,0" HorizontalAlignment="Left"></Label>
-                <Button x:Name="tListFriends" Click="tListFriends_Click" Content="Список друзей" HorizontalAlignment="Center"  Height="30"></Button>
-                <Button x:Name="exit"  Click="exit_Click" Content="Выйти" Height="30" Width="50" HorizontalAlignment="Right"></Button>
-            </DockPanel>
+
+        <DockPanel LastChildFill="True"  Background="lightblue" Height="30" VerticalAlignment="Top">
+            <Label x:Name="tUserName" Height="30"  Margin="0,0,0,0" HorizontalAlignment="Left"></Label>
+            <Button x:Name="tListFriends" Click="tListFriends_Click" Content="Список друзей" HorizontalAlignment="Center"  Height="30"></Button>
+            <Button x:Name="exit"  Click="exit_Click" Content="Выйти" Height="30" Width="50" HorizontalAlignment="Right"></Button>
+        </DockPanel>
 
 
 
+
+        <ListView x:Name="listAudios" Height="400" Margin="0,30,0,0">
+            
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="№" Width="40" DisplayMemberBinding="{Binding count}"/>
+                    <GridViewColumn Header="Время" Width="60" DisplayMemberBinding="{Binding duration}"/>
+                    <GridViewColumn Header="Название" Width="250" DisplayMemberBinding="{Binding title}"/>
+                    <GridViewColumn Header="Исполнитель" Width="250" DisplayMemberBinding="{Binding artist}"/>
+                    <GridViewColumn Header="" Width="200" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button x:Name="btn" Content="Скачать" Click="btn_Click" Tag="{Binding count}"></Button>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+               
+            </ListView.View>
+            
+
+        </ListView>
         
-            <ListView x:Name="listAudios" Height="400" Margin="0,30,0,0">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="№" Width="40" DisplayMemberBinding="{Binding count}"/>
-                            <GridViewColumn Header="Время" Width="60" DisplayMemberBinding="{Binding duration}"/>
-                            <GridViewColumn Header="Название" Width="350" DisplayMemberBinding="{Binding title}"/>
-                            <GridViewColumn Header="Исполнитель" Width="350" DisplayMemberBinding="{Binding artist}"/>
-                        </GridView>
-                    </ListView.View>
-            </ListView>
-        
+
     </Grid>
-    
+
 </Page>

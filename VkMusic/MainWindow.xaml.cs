@@ -26,10 +26,13 @@ namespace VkMusic
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
+    
     public partial class MainWindow : Window
     {
         //благодаря этому всё работает ещё лучше
         public static Vk vk1 = new VkMusic.Vk();
+        public static long? lastId { get; set; }
         public MainWindow()
         {
             InitializeComponent();
@@ -41,7 +44,7 @@ namespace VkMusic
         //запускается программа от сюда
         void OpenLoginPage()
         {
-            App.log1.AutoEnter();
+           App.log1.AutoEnter();
             frame.Navigate(App.log1);
         }
     }
